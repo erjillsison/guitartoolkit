@@ -1,0 +1,18 @@
+**See Concept Image
+
+Buttons on between each fret where the fretting finger is supposed to be
+Toggles between hidden and active state
+Each button will be assigned a Note(A, C, G#, etc.), String(1 - 6), Fret number (0 - 24)
+
+
+Intial state is hidden, toggles to active and shows circle with Note name
+All active buttosn save to a list
+List is compared with the stored scales data and returns matching scales.
+
+Matching scales can be selected to display the whole fretboard
+
+
+Possible features:
+
+Hide/Show note names
+Customize colours
