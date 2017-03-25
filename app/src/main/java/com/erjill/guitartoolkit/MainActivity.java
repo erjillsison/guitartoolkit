@@ -7,10 +7,12 @@ import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.os.Bundle;
+import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
@@ -24,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     NotesData notesData = new NotesData();
     private List<ToggleButton> buttons;
     private ArrayList<Integer> notesInput = new ArrayList();
+
+    ListView lv;
+    TextView tv;
+
 
     private static final int[] BUTTON_IDS={
             R.id.toggleButton01,
@@ -118,7 +124,8 @@ public class MainActivity extends AppCompatActivity {
                 tags.add(Integer.parseInt(tag));
             }
         }
-
+        lv = (ListView) findViewById(R.id.listView);
+        tv = (TextView) findViewById(R.id.txtNumOfScales);
         buttons = new ArrayList<ToggleButton>();
 
         int x = 0;
@@ -138,8 +145,23 @@ public class MainActivity extends AppCompatActivity {
             notesInput.add(tagInt);
         }
 
+
+
         if(notesInput.size()>=3){
-            notesData.areNotesInScale(notesInput);
+            ArrayList<String> ms;
+
+            ms = notesData.areNotesInScale(notesInput);
+
+            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
+                    this,
+                    android.R.layout.simple_list_item_1,
+                    ms);
+            lv.setVisibility(View.VISIBLE);
+            lv.setAdapter(adapter);
+            tv.setText(Integer.toString(ms.size())+" scales found");
+        }else{
+            lv.setVisibility(View.GONE);
+            tv.setText("Enter at least 3 notes on the fretboard above");
         }
 
         //print notesinput

@@ -1,6 +1,8 @@
 package com.erjill.guitartoolkit;
 
 import android.util.Log;
+import android.widget.ArrayAdapter;
+
 import java.lang.reflect.Array;
 import java.util.HashMap;
 import java.util.List;
@@ -51,8 +53,9 @@ public class NotesData {
         populateNotesList();
     }
 
-    public void areNotesInScale(ArrayList<Integer> notesInput){
+    public ArrayList<String> areNotesInScale(ArrayList<Integer> notesInput){
 
+        matchedScales.clear();
         //Convert to number notes as notesInput is formated XY, where X is fret number and Y is string number
         ArrayList<Integer> notesInputConverted =inputConvertMod(notesInput);
 
@@ -76,10 +79,12 @@ public class NotesData {
                     ls += s+" ";
                 }
 
+                matchedScales.add(entry.getKey() +" : "+ ls);
                 Log.d("isInScale",entry.getKey() +" "+ ls);
             }
         }
 
+        return matchedScales;
     }
 
     //Convert to number notes

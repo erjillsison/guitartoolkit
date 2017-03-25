@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:hapticFeedbackEnabled="true"
+    android:gravity="bottom"
     tools:context="com.erjill.guitartoolkit.MainActivity"
     tools:layout_editor_absoluteX="0dp"
     tools:layout_editor_absoluteY="81dp"
-    android:background="@color/background">
+    android:background="@color/background"
+    app:umanoPanelHeight="50dp"
+    app:umanoShadowHeight="10dp">
 
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:layout_marginBottom="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginLeft="10dp"
@@ -1025,4 +1028,26 @@
         </GridLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:paddingTop="10dp">
+
+        <TextView
+            android:id="@+id/txtNumOfScales"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Enter at least 3 notes on the fretboard above" />
+
+        <ListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="60dp"></ListView>
+    </RelativeLayout>
+
+
+</com.sothree.slidinguppanel.SlidingUpPanelLayout>
