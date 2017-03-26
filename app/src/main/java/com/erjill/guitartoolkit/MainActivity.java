@@ -1,35 +1,46 @@
 package com.erjill.guitartoolkit;
 
+import android.content.Intent;
+import android.support.v4.widget.SlidingPaneLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.style.ImageSpan;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.GridView;
 import android.os.Bundle;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
+
+import com.sothree.slidinguppanel.SlidingUpPanelLayout;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import static android.R.attr.onClick;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     NotesData notesData = new NotesData();
     private List<ToggleButton> buttons;
     private ArrayList<Integer> notesInput = new ArrayList();
 
     ListView lv;
     TextView tv;
+    Button clearButton;
+    SlidingUpPanelLayout layout;
 
+    ArrayList<String> ms;
+    ArrayAdapter<String> adapter;
 
     private static final int[] BUTTON_IDS={
             R.id.toggleButton01,
@@ -117,6 +128,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        layout= (SlidingUpPanelLayout)findViewById(R.id.myPanel);
+        layout.setScrollableView(findViewById (R.id.listView));
+        layout.setFadeOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+                layout.setPanelState(SlidingUpPanelLayout.PanelState.COLLAPSED);
+            }
+        });
+
+        //Store views to variables
+        lv = (ListView) findViewById(R.id.listView);
+        tv = (TextView) findViewById(R.id.txtNumOfScales);
+        buttons = new ArrayList<ToggleButton>();
+        clearButton = (Button) findViewById(R.id.btnClear);
+
+        //Generate tags to be applied to buttons. Tags are formated 00, fret number then string number
         ArrayList<Integer> tags = new ArrayList();
         for(int x=0; x<13; x+=1){
             for(int y=1; y<7; y+=1){
@@ -124,53 +151,121 @@ public class MainActivity extends AppCompatActivity {
                 tags.add(Integer.parseInt(tag));
             }
         }
-        lv = (ListView) findViewById(R.id.listView);
-        tv = (TextView) findViewById(R.id.txtNumOfScales);
-        buttons = new ArrayList<ToggleButton>();
 
+        //Create the buttons, apply tag
         int x = 0;
-        for(int id:BUTTON_IDS){
-            ToggleButton button = (ToggleButton)findViewById(id);
+        for(int id:BUTTON_IDS) {
+            ToggleButton button = (ToggleButton) findViewById(id);
             button.setTag(tags.get(x));
             buttons.add(button);
-            x+=1;
+            x += 1;
         }
+
+        displayAllScales();
+
+        //Togggle Buttons Listener
+        CompoundButton.OnCheckedChangeListener multiListener = new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                //Initial check if user input
+                if (buttonView.isPressed()) {
+                    int tagInt = (Integer) buttonView.getTag();
+                    if (notesInput.contains(tagInt) && !buttonView.isChecked()) {
+                        Log.d("remove", "removed");
+                        notesInput.remove(notesInput.indexOf(tagInt));
+                    } else if (buttonView.isChecked()) {
+                        Log.d("add", "Added");
+                        notesInput.add(tagInt);
+                    }
+
+
+                    if (notesInput.size() >= 3) {
+                        ms = notesData.areNotesInScale(notesInput);
+                        adapter = new ArrayAdapter<String>(
+                                MainActivity.this,
+                                android.R.layout.simple_list_item_1,
+                                ms);
+
+                        lv.setVisibility(View.VISIBLE);
+                        lv.setAdapter(adapter);
+                        tv.setText(Integer.toString(ms.size()) + " scales found");
+                    } else {
+                        displayAllScales();
+                        tv.setText("Enter at least 3 notes on the fretboard above");
+                    }
+                }
+            }
+        };
+
+        //Add all toggle buttons to listener
+        for(ToggleButton b : buttons) {
+            b.setOnCheckedChangeListener(multiListener);
+        }
+
+        //ListView Listener
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                resetButtons();
+                String item = ((TextView)view).getText().toString();
+                //ListView is populated with textviews. getText() includes the scale name and notes
+                //Split is used to get the scale name which will be used to find the scale in notesData.currScales<String,ArrayList>
+                String[] sep = item.split(" : ");
+                ArrayList<Integer> s = notesData.currScales.get(sep[0]);
+
+                for(ToggleButton b : buttons){
+                    int tag = (Integer)b.getTag();
+                    int buttonNumNote = notesData.convertToNumNote(tag);
+                    b.setClickable(false);
+
+                    if(s.contains(buttonNumNote)){
+                        if(buttonNumNote == s.get(0)){
+                            b.setBackgroundResource(R.drawable.root);
+                        }
+                        b.setChecked(true);
+
+                    }
+
+                }
+
+                String listString = "";
+                for (int i : s){
+                    listString += Integer.toString(i)+" ";
+                }
+            }
+        });
+
     }
 
-    public void buttonOnClick(View v){
-        int tagInt = (Integer)v.getTag();
-        if(notesInput.contains(tagInt)){
-            notesInput.remove(notesInput.indexOf(tagInt));
-        }else {
-            notesInput.add(tagInt);
+    void displayAllScales(){
+        adapter = new ArrayAdapter<String>(
+                MainActivity.this,
+                android.R.layout.simple_list_item_1,
+                notesData.allScalesNotes);
+        lv.setVisibility(View.VISIBLE);
+        lv.setAdapter(adapter);
+    }
+
+    public void clearButtons(View v){
+
+       resetButtons();
+
+        displayAllScales();
+
+        tv.setText("Enter at least 3 notes on the fretboard above");
+        notesInput.clear();
+    }
+
+    void resetButtons(){
+        for(ToggleButton b : buttons){
+            b.setChecked(false);
+            b.setClickable(true);
+            b.setEnabled(true);
+            b.setBackgroundResource(R.drawable.toggle_selector);
         }
 
-
-
-        if(notesInput.size()>=3){
-            ArrayList<String> ms;
-
-            ms = notesData.areNotesInScale(notesInput);
-
-            ArrayAdapter<String> adapter = new ArrayAdapter<String>(
-                    this,
-                    android.R.layout.simple_list_item_1,
-                    ms);
-            lv.setVisibility(View.VISIBLE);
-            lv.setAdapter(adapter);
-            tv.setText(Integer.toString(ms.size())+" scales found");
-        }else{
-            lv.setVisibility(View.GONE);
-            tv.setText("Enter at least 3 notes on the fretboard above");
-        }
-
-        //print notesinput
-        String listString = "";
-        for(int i : notesInput){
-            listString+= Integer.toString(i) + " ";
-        }
-        //Log.d("onClick",listString);
-        //Log.d("onClick", v.getTag().toString());
+        tv.setText("Enter at least 3 notes on the fretboard above");
+        notesInput.clear();
     }
 }
 

@@ -5,6 +5,7 @@ import android.widget.ArrayAdapter;
 
 import java.lang.reflect.Array;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -20,14 +21,19 @@ public class NotesData {
     public List<String> notes = Arrays.asList("C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B");
 
     //Scales will store the main template i.e for C major
-    public int[] major = {1, 3, 5, 6, 8, 10, 12};
-    public int[] minor = {1, 3, 4, 6, 8, 9, 11};
-    Map<String, int[]> scales = new HashMap<String, int[]>();
+    int[] major = {1, 3, 5, 6, 8, 10, 12};
+    int[] minor = {1, 3, 4, 6, 8, 9, 11};
+    int[] minorPentatonic = {1, 3, 5, 8, 10};
+    int [] majorPentatonic = {1, 4, 6, 8, 11};
+    int[] blues = {1, 4, 6, 7, 8, 11};
+
+    Map<String, int[]> scales = new LinkedHashMap<String, int[]>();
 
     //currScales will store the scales after applying the base scales template to the other root notes
-    Map<String,ArrayList> currScales = new HashMap<String,ArrayList>();
+    Map<String,ArrayList> currScales = new LinkedHashMap<String,ArrayList>();
 
-    //ArrayList<Integer> notesInput = new ArrayList();
+    //Store all scales as their string value
+    ArrayList<String> allScalesNotes = new ArrayList();
 
     //Store the key of the matched scales from the user input
     //Used to display on drawer
@@ -43,6 +49,9 @@ public class NotesData {
 
         scales.put("Major",major);
         scales.put("Minor",minor);
+        scales.put("Major Pentatonic",majorPentatonic);
+        scales.put("Minor Pentatonic",minorPentatonic);
+        scales.put("Blues",blues);
 
         //Notes that user will input
         //Hardcode for testing
@@ -53,11 +62,15 @@ public class NotesData {
         populateNotesList();
     }
 
+
     public ArrayList<String> areNotesInScale(ArrayList<Integer> notesInput){
 
         matchedScales.clear();
         //Convert to number notes as notesInput is formated XY, where X is fret number and Y is string number
-        ArrayList<Integer> notesInputConverted =inputConvertMod(notesInput);
+        ArrayList<Integer> notesInputConverted = new ArrayList();
+        for(int i:notesInput){
+            notesInputConverted.add(convertToNumNote(i));
+        }
 
         ArrayList<String> noteInputToString = convertToNotes(notesInputConverted);
 
@@ -87,25 +100,15 @@ public class NotesData {
         return matchedScales;
     }
 
-    //Convert to number notes
-     ArrayList inputConvertMod(ArrayList<Integer> g){
-        ArrayList<Integer> l = new ArrayList();
-
-        int x=0;
-        for(int i: g){
-            int temp;
-            temp = (tuning[i%10 -1] + i/10);
-            temp = temp>12? temp%12:temp;
-            temp = temp==0? 12:temp;
-            l.add(temp);
-        }
-
-        String listString = "";
-         for (int i : l){
-             listString += Integer.toString(i)+" ";
-         }
-        return l;
+    //Convert button tags e.g 01 (fret, string) to number notes e.g 1 for C, 2 for C#
+    public int convertToNumNote(int i){
+        int temp;
+        temp = (tuning[i%10 -1] + i/10);
+        temp = temp>12? temp%12:temp;
+        temp = temp==0? 12:temp;
+        return temp;
     }
+
     public ArrayList convertToNotes(ArrayList<Integer> al){
         ArrayList<String> g = new ArrayList();
         for(int x = 0; x<al.size(); x+=1){
@@ -129,14 +132,9 @@ public class NotesData {
             for (int s : rootMajor){
                 listString += Integer.toString(s)+" ";
             }
-
-
             currScales.put(notes.get(rootMajor.get(0)-1)+" " + entry.getKey(),rootMajor);
             //Log.d("a",entry.getKey()+Arrays.toString(entry.getValue()));
         }
-
-
-
     }
 
     public void populateNotesList(){
@@ -156,8 +154,11 @@ public class NotesData {
             for (String s : tempString){
                 listString += s+" ";
             }
+            allScalesNotes.add(entry.getKey()+ " : " + listString);
+        }
 
-            Log.d("Scales",entry.getKey() + " " + listString);
+        for(String i : allScalesNotes){
+            Log.d("allScalesNotes",i);
         }
     }
 

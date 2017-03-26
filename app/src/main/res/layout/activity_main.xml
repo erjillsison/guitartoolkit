@@ -3,16 +3,17 @@
 <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/myPanel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:hapticFeedbackEnabled="true"
+    android:background="@color/background"
     android:gravity="bottom"
+    android:hapticFeedbackEnabled="true"
+    app:umanoPanelHeight="50dp"
+    app:umanoShadowHeight="10dp"
     tools:context="com.erjill.guitartoolkit.MainActivity"
     tools:layout_editor_absoluteX="0dp"
-    tools:layout_editor_absoluteY="81dp"
-    android:background="@color/background"
-    app:umanoPanelHeight="50dp"
-    app:umanoShadowHeight="10dp">
+    tools:layout_editor_absoluteY="81dp">
 
     <ScrollView
         android:id="@+id/scrollView2"
@@ -33,9 +34,13 @@
         app:layout_constraintVertical_bias="0.0">
 
         <GridLayout
+            android:id="@+id/grid"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:columnCount="1">
+            android:columnCount="1"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingTop="5dp">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -47,7 +52,7 @@
                 android:layout_marginRight="0dp"
                 android:layout_marginStart="0dp"
                 android:layout_marginTop="0dp"
-                android:background="@drawable/fret"
+                android:background="@drawable/fret0"
                 android:orientation="horizontal"
                 android:weightSum="6">
 
@@ -58,7 +63,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -68,7 +72,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -78,7 +81,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -88,7 +90,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -98,7 +99,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -108,14 +108,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -134,7 +133,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -144,7 +142,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -154,7 +151,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -164,7 +160,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -174,7 +169,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -184,14 +178,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -210,7 +203,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -220,7 +212,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -230,7 +221,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -240,7 +230,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -250,7 +239,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -260,14 +248,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -286,7 +273,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -296,7 +282,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -306,7 +291,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -316,7 +300,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -326,7 +309,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -336,14 +318,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -362,7 +343,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -372,7 +352,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -382,7 +361,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -392,7 +370,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -402,7 +379,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -412,14 +388,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -438,7 +413,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -448,7 +422,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -458,7 +431,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -468,7 +440,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -478,7 +449,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -488,14 +458,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -514,7 +483,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -524,7 +492,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -534,7 +501,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -544,7 +510,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -554,7 +519,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -564,14 +528,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -590,7 +553,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -600,7 +562,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -610,7 +571,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -620,7 +580,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -630,7 +589,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -640,14 +598,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -666,7 +623,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -676,7 +632,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -686,7 +641,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -696,7 +650,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -706,7 +659,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -716,14 +668,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -742,7 +693,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -752,7 +702,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -762,7 +711,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -772,7 +720,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -782,7 +729,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -792,14 +738,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -818,7 +763,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -828,7 +772,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -838,7 +781,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -848,7 +790,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -858,7 +799,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -868,14 +808,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -894,7 +833,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -904,7 +842,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -914,7 +851,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -924,7 +860,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -934,7 +869,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -944,14 +878,13 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
+                android:layout_height="60dp"
                 android:layout_margin="0dp"
                 android:layout_marginBottom="0dp"
                 android:layout_marginEnd="0dp"
@@ -970,7 +903,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -980,7 +912,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -990,7 +921,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -1000,7 +930,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -1010,7 +939,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
 
@@ -1020,7 +948,6 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:background="@drawable/toggle_selector"
-                    android:onClick="buttonOnClick"
                     android:textOff=""
                     android:textOn="" />
             </LinearLayout>
@@ -1028,25 +955,41 @@
         </GridLayout>
     </ScrollView>
 
+
     <RelativeLayout
+        android:id="@+id/layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_weight="0.8"
         android:background="#FFFFFF"
-        android:paddingLeft="20dp"
-        android:paddingRight="20dp"
-        android:paddingTop="10dp">
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnClear"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:gravity="right"
+            android:onClick="clearButtons"
+            android:text="CLEAR"
+            android:textAlignment="center" />
 
         <TextView
             android:id="@+id/txtNumOfScales"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="15dp"
             android:text="Enter at least 3 notes on the fretboard above" />
 
         <ListView
             android:id="@+id/listView"
+            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"></ListView>
+            android:layout_height="match_parent"></ListView>
+
+
     </RelativeLayout>
 
 
