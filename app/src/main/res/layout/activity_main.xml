@@ -6,7 +6,6 @@
     android:id="@+id/myPanel"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
     android:gravity="bottom"
     android:hapticFeedbackEnabled="true"
     app:umanoPanelHeight="50dp"
@@ -961,7 +960,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="0.8"
-        android:background="#FFFFFF"
         android:orientation="horizontal">
 
         <Button
@@ -985,9 +983,9 @@
 
         <ListView
             android:id="@+id/listView"
-            android:layout_marginTop="50dp"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"></ListView>
+            android:layout_height="match_parent"
+            android:layout_marginTop="50dp"></ListView>
 
 
     </RelativeLayout>

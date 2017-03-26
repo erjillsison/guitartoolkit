@@ -23,8 +23,8 @@ public class NotesData {
     //Scales will store the main template i.e for C major
     int[] major = {1, 3, 5, 6, 8, 10, 12};
     int[] minor = {1, 3, 4, 6, 8, 9, 11};
-    int[] minorPentatonic = {1, 3, 5, 8, 10};
-    int [] majorPentatonic = {1, 4, 6, 8, 11};
+    int[] majorPentatonic = {1, 3, 5, 8, 10};
+    int [] minorPentatonic = {1, 4, 6, 8, 11};
     int[] blues = {1, 4, 6, 7, 8, 11};
 
     Map<String, int[]> scales = new LinkedHashMap<String, int[]>();
